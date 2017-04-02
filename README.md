@@ -2,11 +2,27 @@
 
 (it's not like the disney thing)
 
-FastPass or `fp` is a password manager focused on getting you your passwords quickly.
+FastPass or `fp` is a command line password manager focused on getting you logged in quickly.
 
-It uses a combination of fuzzy searching and learning which passwords you retrieve most frequently.
+It uses fuzzy searching and learns which passwords you retrieve most frequently.
 
 By default it generates easy to remember passwords using human words.
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [FastPass](#fastpass)
+  - [Example](#example)
+  - [Install](#install)
+  - [Features](#features)
+  - [Generators](#generators)
+    - [Human](#human)
+    - [Hex](#hex)
+    - [Base62](#base62)
+  - [Password caching](#password-caching)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Example
 
