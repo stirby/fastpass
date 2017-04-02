@@ -57,6 +57,28 @@ func (es Entries) SortByHits() Entries {
 	return es
 }
 
+//SortByBestMatch tries to sort entries by best match
+func (es Entries) SortByBestMatch(search string) Entries {
+	sort.Slice(es, func(i, j int) bool {
+		iDistance, jDistance := fuzzy.RankMatch(search, es[i].Name), fuzzy.RankMatch(search, es[j].Name)
+
+		if iDistance < 0 {
+			return false
+		}
+		if iDistance == 0 {
+			return true
+		}
+		if jDistance == 0 {
+			return false
+		}
+
+		iScore := (float64(es[i].Stats.Hits) / (float64(iDistance) / float64(len(es[i].Name))))
+		jScore := (float64(es[j].Stats.Hits) / (float64(jDistance) / float64(len(es[j].Name))))
+		return iScore > jScore
+	})
+	return es
+}
+
 // //FilterByTag returns all entries with a certain tag
 // func (entries Entries) FilterByTag(tag string) Entries {
 // 	var matches Entries

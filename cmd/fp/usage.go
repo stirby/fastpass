@@ -26,7 +26,7 @@ Commands:
 
     delete <name>        deletes an entry.
 
-    edit   <name>        edits an entry with $EDITOR.
+    edit <fuzzy name>    edits an entry with $EDITOR.
 
     list [fuzzy name]    lists all entries.
 

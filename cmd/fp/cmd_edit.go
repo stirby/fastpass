@@ -16,11 +16,13 @@ import (
 
 func cmdEdit(fp *fastpass.FastPass) {
 	name := flag.Arg(1)
-	entry := fp.Entries.FindByName(name)
+	entries := fp.Entries.SortByBestMatch(name)
 
-	if entry == nil {
+	if len(entries) == 0 {
 		fail("entry %q not found", name)
 	}
+
+	entry := entries[0]
 
 	fi, err := os.OpenFile(fmt.Sprintf("/tmp/%v.json", crand.String(10)), os.O_RDWR|os.O_CREATE, 0600)
 	if err != nil {
