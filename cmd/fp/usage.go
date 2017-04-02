@@ -17,10 +17,10 @@ Commands:
                          does not exist, a new one will be created.
     open                 caches the password for the value of --db.
     close                forgets cached passwords.
-    new <name>           creates a new entry with name.
-    delete <name>        deletes an entry.
+    new  <name>           creates a new entry with name.
+    rm   <name>          deletes an entry.
     edit <fuzzy name>    edits an entry with $EDITOR.
-    list [fuzzy name]    lists all entries.
+    ls   [fuzzy name]    lists all entries.
     gen                  generates a password for stdout.
     chpass               changes password of active database.
 Options:

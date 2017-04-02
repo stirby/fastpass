@@ -60,7 +60,7 @@ For example:
 
 ```bash
 ammar @ nebula > ~
-$ fp list reddit
+$ fp ls reddit
 ------------
 /home/ammar/fastpass.db: 2 entries
 ------------

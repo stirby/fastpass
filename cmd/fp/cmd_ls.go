@@ -9,7 +9,7 @@ import (
 	"github.com/ammario/fastpass"
 )
 
-func cmdList(fp *fastpass.FastPass) {
+func cmdLs(fp *fastpass.FastPass) {
 	search := flag.Arg(1)
 
 	entries := fp.Entries.FuzzyMatch(search)
