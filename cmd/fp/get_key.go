@@ -21,7 +21,7 @@ func getKey() (key [32]byte) {
 
 	fi, err := os.OpenFile(passwordKeyCache, os.O_RDONLY, 0600)
 	if err != nil {
-		fail("failed to open password cache (maybe you forgot to run `fp open`)", passwordKeyCache)
+		fail("failed to open password cache (maybe you forgot to run `fp open`)")
 	}
 	defer fi.Close()
 

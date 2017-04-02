@@ -14,7 +14,6 @@ func cmdDelete(fp *fastpass.FastPass) {
 	cleaned := fp.Entries.DeleteByName(toDelete)
 
 	if len(cleaned) == len(fp.Entries) {
-		printPossibleMatches(cleaned, toDelete)
 		fail("could not find entry %q", toDelete)
 	}
 
