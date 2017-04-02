@@ -64,8 +64,8 @@ func main() {
 		cmdOpen()
 	case "close":
 		cmdClose()
-	case "create":
-		authWrap(cmdCreate)
+	case "new":
+		authWrap(cmdNew)
 	case "list":
 		authWrap(cmdList)
 	case "delete":

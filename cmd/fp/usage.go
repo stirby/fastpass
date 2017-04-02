@@ -22,7 +22,7 @@ Commands:
     
     close                forgets cached passwords.
 
-    create <name>        creates an entry.
+    new <name>           creates a new entry with name.
 
     delete <name>        deletes an entry.
 
