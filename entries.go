@@ -3,6 +3,8 @@ package fastpass
 import (
 	"sort"
 
+	"strings"
+
 	"github.com/renstrom/fuzzysearch/fuzzy"
 )
 
@@ -55,7 +57,7 @@ func (es Entries) SortByName() Entries {
 //SortByHits sorts es by hits
 func (es Entries) SortByHits() Entries {
 	sort.Slice(es, func(i, j int) bool {
-		return es[i].Stats.Hits > es[j].Stats.Hits
+		return es[i].Stats.Activity > es[j].Stats.Activity
 	})
 	return es
 }
@@ -79,8 +81,12 @@ func (es Entries) SortByBestMatch(search string) Entries {
 			return false
 		}
 
-		iScore := (float64(es[i].Stats.Hits) / (float64(iDistance) / float64(len(es[i].Name))))
-		jScore := (float64(es[j].Stats.Hits) / (float64(jDistance) / float64(len(es[j].Name))))
+		if strings.HasPrefix(es[i].Name, search) && !strings.HasPrefix(es[j].Name, search) {
+			return true
+		}
+
+		iScore := (float64(es[i].Stats.Activity) / (float64(iDistance) / float64(len(es[i].Name))))
+		jScore := (float64(es[j].Stats.Activity) / (float64(jDistance) / float64(len(es[j].Name))))
 		return iScore > jScore
 	})
 	return es
