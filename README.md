@@ -2,9 +2,9 @@
 
 (it's not like the disney thing)
 
-FastPass or `fp` intends to be the quickest password manager.
+FastPass or `fp` is a password manager focused on getting you your passwords quickly.
 
-It uses fuzzy searching and learns your password access tendencies to retrieve a password with as few keystrokes as possible.
+It uses a combination of fuzzy searching and learning which passwords you retrieve most frequently.
 
 By default it generates easy to remember passwords using human words.
 
