@@ -15,7 +15,7 @@ func cmdList(fp *fastpass.FastPass) {
 	entries := fp.Entries.FuzzyMatch(search)
 
 	fmt.Println("------------")
-	fmt.Printf("%v entries\n", len(entries))
+	fmt.Printf("%v: %v entries\n", config.DB, len(entries))
 	fmt.Println("------------")
 	largestName := 0
 	for _, e := range entries {
