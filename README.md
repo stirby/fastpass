@@ -26,14 +26,6 @@ By default it generates easy to remember passwords using human words.
 
 ## Example
 
-I don't want to have to type this 15 times a day:
-
-```bash
-pass -c pornhub.com
-```
-
-with fp I just type
-
 ```bash
 $ fp p
 other matches: ammarb36@pornhub.com ammarb36@pornhut.com ammarb36@papajohns.com ammarb36@pizzahut.com ammarb36@paypal.com 
@@ -56,6 +48,9 @@ go get -u github.com/ammario/fastpass/cmd/fp
 - Ranking based on access frequency
 - Password and key file support
 - Multiple password generation strategies
+- Password caching
+- Change password
+
 
 ## Generators
 
