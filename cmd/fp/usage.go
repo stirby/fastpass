@@ -11,18 +11,22 @@ Commands:
     (default)            The default action is a get for the best
                          entry that matches the argument value. See
                          the README for more info.
+    
     init                 Creates a new database at ~/.fp.db or the
                          value of --db.
                          If --key-file is set and the  key file
                          does not exist, a new one will be created.
     open                 caches the password for the value of --db.
     close                forgets cached passwords.
+    chpass               changes password of active database.
+    
     new  <name>           creates a new entry with name.
     rm   <name>          deletes an entry.
     edit <fuzzy name>    edits an entry with $EDITOR.
+                         specify --notes to just edit notes.
     ls   [fuzzy name]    lists all entries.
+
     gen                  generates a password for stdout.
-    chpass               changes password of active database.
 Options:
   --help, -h             display this help and exit
   --db                   Database location. Defaults to 

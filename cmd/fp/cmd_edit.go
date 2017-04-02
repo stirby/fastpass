@@ -10,6 +10,8 @@ import (
 
 	"os/exec"
 
+	"io/ioutil"
+
 	"github.com/ammario/crand"
 	"github.com/ammario/fastpass"
 )
@@ -23,19 +25,26 @@ func cmdEdit(fp *fastpass.FastPass) {
 	}
 
 	entry := entries[0]
-
-	fi, err := os.OpenFile(fmt.Sprintf("/tmp/%v.json", crand.String(10)), os.O_RDWR|os.O_CREATE, 0600)
+	fname := fmt.Sprintf("/tmp/%v", crand.String(10))
+	if !config.Notes {
+		fname += ".json"
+	}
+	fi, err := os.OpenFile(fname, os.O_RDWR|os.O_CREATE, 0600)
 	if err != nil {
 		fail("failed to create temp file: %v", err)
 	}
 
 	defer os.Remove(fi.Name())
 
-	dat, err := json.MarshalIndent(entry, "", "    ")
-	if err != nil {
-		fail("failed to marshal entry: %v", err)
+	if config.Notes {
+		fi.WriteString(entry.Notes)
+	} else {
+		dat, err := json.MarshalIndent(entry, "", "    ")
+		if err != nil {
+			fail("failed to marshal entry: %v", err)
+		}
+		fi.Write(dat)
 	}
-	fi.Write(dat)
 
 	cmd := exec.Command(config.Editor, fi.Name())
 
@@ -52,7 +61,15 @@ func cmdEdit(fp *fastpass.FastPass) {
 	}
 
 	fi.Seek(0, 0)
-	if err := json.NewDecoder(fi).Decode(&entry); err != nil {
-		fail("failed to decode file: %v", err)
+	if config.Notes {
+		notes, err := ioutil.ReadAll(fi)
+		if err != nil {
+			fail("failed to read %v: %v", fi.Name(), err)
+		}
+		entry.Notes = string(notes)
+	} else { //didnt outdent+return to remain consistent with previous branching
+		if err := json.NewDecoder(fi).Decode(&entry); err != nil {
+			fail("failed to decode file: %v", err)
+		}
 	}
 }

@@ -15,6 +15,7 @@ var config struct {
 	KeyFile   string
 	Editor    string
 	Show      bool
+	Notes     bool
 }
 
 func main() {
@@ -42,9 +43,11 @@ func main() {
 	flag.StringVar(&config.Generator, "g", env("FP_GENERATOR", "human"), "")
 	flag.StringVar(&config.KeyFile, "key-file", env("FP_KEYFILE", ""), "")
 	flag.BoolVar(&config.Show, "s", false, "")
+	flag.BoolVar(&config.Notes, "notes", false, "")
 
 	config.Editor = env("EDITOR", "/usr/bin/vim")
 
+	flag.Usage = usage
 	flag.Parse()
 
 	if config.Help {

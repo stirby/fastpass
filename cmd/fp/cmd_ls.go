@@ -26,7 +26,7 @@ func cmdLs(fp *fastpass.FastPass) {
 	for _, e := range entries.SortByName() {
 		fmt.Printf("%-"+strconv.Itoa(largestName)+"v [hits:%03v created:%v]", e.Name, e.Stats.Hits, e.CreatedAt.Format("01/02/2006 15:04:05"))
 		if e.Notes != "" {
-			fmt.Printf(" Notes: %v", e.Notes)
+			fmt.Printf(" %v", e.Notes)
 		}
 		fmt.Printf("\n")
 	}
