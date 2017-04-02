@@ -31,7 +31,7 @@ func cmdGet(fp *fastpass.FastPass) {
 	e.Stats.Hit()
 
 	if len(results) > 1 {
-		fmt.Printf("other matches: ")
+		fmt.Printf("similar: ")
 		for _, r := range results[1:] {
 			fmt.Printf("%v ", r.Name)
 		}

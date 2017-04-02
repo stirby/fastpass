@@ -28,7 +28,7 @@ By default it generates easy to remember passwords using human words.
 
 ```bash
 $ fp p
-other matches: ammarb36@pornhub.com ammarb36@pornhut.com ammarb36@papajohns.com ammarb36@pizzahut.com ammarb36@paypal.com 
+similar: ammarb36@pornhub.com ammarb36@pornhut.com ammarb36@papajohns.com ammarb36@pizzahut.com ammarb36@paypal.com 
 ammarb36@pornhub.com -> Copied!
 ```
 
@@ -68,7 +68,7 @@ usr1@reddit.com  [hits:1 created:04/02/2017 14:49:50]
 usr2@reddit.com  [hits:3 created:04/02/2017 14:48:58] Notes: hola passwords
 ammar @ nebula > ~
 $ fp reddit
-other matches: usr1@reddit.com 
+similar: usr1@reddit.com 
 usr2@reddit.com -> Password Copied!
 ```
 
