@@ -37,8 +37,10 @@ with fp I just type
 ```bash
 $ fp p
 other matches: ammarb36@pornhub.com ammarb36@pornhut.com ammarb36@papajohns.com ammarb36@pizzahut.com ammarb36@paypal.com 
-ammarb36@pornhub.com -> "ViolentRelativeDamsPreferences441" Copied!
+ammarb36@pornhub.com -> Copied!
 ```
+
+Because this is fuzzy searching, you should take care in making sure the right password is matched.
 
 ## Install
 
