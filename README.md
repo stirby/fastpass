@@ -49,7 +49,7 @@ go get -u github.com/ammario/fastpass/cmd/fp
 - Master password and key file support
 - Key generated from master password caching
 - Change master password
-- Passwords are streched with pbkdf2/sha256 with 65536 iterations
+- Passwords are streched with pbkdf2/sha256 using 65536 iterations
 - Multiple password generation strategies
 
 
