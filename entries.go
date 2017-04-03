@@ -69,6 +69,11 @@ func (es Entries) SortByBestMatch(search string) Entries {
 		distances[i] = fuzzy.RankMatch(search, e.Name)
 	}
 	sort.Slice(es, func(i, j int) bool {
+		//if i contains the substring but j doesn't i is much more likely to be correct.
+		if strings.Contains(es[i].Name, search) && !strings.Contains(es[j].Name, search) {
+			return true
+		}
+
 		iDistance, jDistance := distances[i], distances[j]
 
 		if iDistance < 0 {
@@ -79,10 +84,6 @@ func (es Entries) SortByBestMatch(search string) Entries {
 		}
 		if jDistance == 0 {
 			return false
-		}
-
-		if strings.HasPrefix(es[i].Name, search) && !strings.HasPrefix(es[j].Name, search) {
-			return true
 		}
 
 		iScore := (float64(es[i].Stats.Activity) / (float64(iDistance) / float64(len(es[i].Name))))

@@ -19,14 +19,16 @@ Commands:
     open                 caches the password for the value of --db.
     close                forgets cached passwords.
     chpass               changes password of active database.
-    
+
     new  <name>           creates a new entry with name.
     rm   <name>          deletes an entry.
-    edit <fuzzy name>    edits an entry with $EDITOR.
+    edit <fuzzy name>    edits an entry with $EDITOR or vim.
                          specify --notes to just edit notes.
     ls   [fuzzy name]    lists all entries.
 
     gen                  generates a password for stdout.
+
+    import
 Options:
   --help, -h             display this help and exit
   --db                   Database location. Defaults to 
