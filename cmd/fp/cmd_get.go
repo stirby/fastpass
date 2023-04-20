@@ -21,7 +21,7 @@ func cmdGet(fp *fastpass.FastPass) {
 
 	if len(results) > 1 {
 		fmt.Printf("other matches: ")
-		for _, r := range results {
+		for _, r := range results[1:] {
 			fmt.Printf("%v ", r.Name)
 		}
 		fmt.Printf("\n")
