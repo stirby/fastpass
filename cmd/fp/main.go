@@ -72,6 +72,8 @@ func main() {
 		authWrap(cmdDelete)
 	case "edit":
 		authWrap(cmdEdit)
+	case "gen":
+		cmdGen()
 	default:
 		authWrap(cmdGet)
 	}

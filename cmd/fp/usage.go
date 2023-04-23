@@ -1,12 +1,11 @@
 package main
 
 import "os"
-import "fmt"
 
 func usage() {
 	const msg = `Usage: fp <flags> [command]
 
-More info: https://github.com/s-kirby/fp
+More info: https://github.com/s-kirby/fastpass
 
 Commands:
     (default)            The default action is a search for the best
@@ -31,6 +30,7 @@ Commands:
 
     list [fuzzy name]    lists all entries.
 
+    gen                  generates a password for stdout.
 Options:
   --help, -h             display this help and exit
   --db                   Database location. Defaults to 
@@ -44,6 +44,6 @@ Options:
   --key-file             Key file location. 
                          May be set with FP_KEYFILE
 `
-	fmt.Println(msg)
+	os.Stdout.WriteString(msg)
 	os.Exit(1)
 }
