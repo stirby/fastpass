@@ -47,5 +47,7 @@ func cmdInit() {
 		fail("failed to create db: %v", err)
 	}
 
+	fp.Close()
+
 	success("created db @ %v", config.DB)
 }

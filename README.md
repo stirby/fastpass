@@ -61,7 +61,7 @@ go get -u github.com/s-kirby/fastpass/cmd/fp
 
 The human password generator uses the lists in world_list/ to generate passwords.
 
-It uses the following format: `<Adjective><Adjective><Noun><Noun><random num 000->999>`
+It uses the following format: `<Adjective><Adjective><Noun><Noun><random num [000, 1000)>`
 
 It uses about 55 bits of entropy.
 
