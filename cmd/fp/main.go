@@ -19,6 +19,7 @@ var config struct {
 	KeyFile   string
 	Editor    string
 	Show      bool
+	Copy      bool
 }
 
 func main() {
@@ -46,6 +47,7 @@ func main() {
 	flag.StringVar(&config.Generator, "g", env("FP_GENERATOR", "human"), "")
 	flag.StringVar(&config.KeyFile, "key-file", env("FP_KEYFILE", ""), "")
 	flag.BoolVar(&config.Show, "s", false, "")
+	flag.BoolVar(&config.Copy, "c", true, "")
 
 	config.Editor = env("EDITOR", "/usr/bin/vim")
 

@@ -26,13 +26,16 @@ func cmdGet(fp *fastpass.FastPass) {
 		}
 		fmt.Printf("\n")
 	}
-	if err := clipboard.WriteAll(e.Password); err != nil {
-		fail("cannot copy to clipboard: %v", err)
-	}
 
 	color.New(color.Bold).Printf("%v", e.Name)
 	if config.Show {
 		color.New(color.FgHiMagenta).Printf(" -> %q", e.Password)
 	}
-	fmt.Printf(" -> Password Copied!\n")
+	if config.Copy {
+		if err := clipboard.WriteAll(e.Password); err != nil {
+			fail("cannot copy to clipboard: %v", err)
+		}
+		fmt.Printf(" -> Password Copied!")
+	}
+	fmt.Printf("\n")
 }

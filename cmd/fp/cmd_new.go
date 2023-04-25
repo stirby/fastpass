@@ -9,6 +9,7 @@ import (
 
 	"github.com/s-kirby/fastpass"
 	"github.com/s-kirby/fastpass/passgen"
+	"github.com/atotto/clipboard"
 	"github.com/fatih/color"
 )
 
@@ -38,5 +39,13 @@ func cmdNew(fp *fastpass.FastPass) {
 		CreatedAt: time.Now(),
 	}
 	fp.Entries = append(fp.Entries, entry)
-	fmt.Printf("[%v] password: %v\n", entry.Name, color.MagentaString("%q", entry.Password))
+	fmt.Printf("[%v]", entry.Name)
+	if config.Show {
+		fmt.Printf(" password: %v", color.MagentaString("%q", entry.Password))
+	}
+	if config.Copy {
+		clipboard.WriteAll(entry.Password)
+		fmt.Printf(" copied!")
+	}
+	fmt.Printf("\n")
 }
