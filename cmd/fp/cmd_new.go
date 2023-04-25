@@ -26,7 +26,7 @@ func passwordFromGenerator() (password string) {
 	return ""
 }
 
-func cmdCreate(fp *fastpass.FastPass) {
+func cmdNew(fp *fastpass.FastPass) {
 	name := flag.Arg(1)
 	entry := fp.Entries.FindByName(name)
 	if entry != nil {
