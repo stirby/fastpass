@@ -12,10 +12,17 @@ import (
 
 func cmdGet(fp *fastpass.FastPass) {
 	search := flag.Arg(0)
-	results := fp.Entries.FuzzyMatch(search).SortByHits()
+
+	results := fp.Entries.SortByName()
+
+	if search != "" {
+		results = fp.Entries.SortByBestMatch(search)
+	}
+
 	if len(results) == 0 {
 		fail("no results found")
 	}
+
 	e := results[0]
 	e.Stats.Hit()
 
