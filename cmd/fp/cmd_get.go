@@ -13,6 +13,10 @@ import (
 func cmdGet(fp *fastpass.FastPass) {
 	search := flag.Arg(0)
 
+	if len(flag.Args()) > 1 {
+		usage()
+	}
+
 	results := fp.Entries.SortByName()
 
 	if search != "" {
