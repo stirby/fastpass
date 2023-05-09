@@ -31,6 +31,8 @@ Commands:
     list [fuzzy name]    lists all entries.
 
     gen                  generates a password for stdout.
+
+    chpass               changes password of active database.
 Options:
   --help, -h             display this help and exit
   --db                   Database location. Defaults to 

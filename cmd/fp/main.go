@@ -8,10 +8,6 @@ import (
 	"fmt"
 )
 
-var (
-	passwordKeyCache string
-)
-
 var config struct {
 	Generator string
 	Help      bool
@@ -76,6 +72,8 @@ func main() {
 		authWrap(cmdEdit)
 	case "gen":
 		cmdGen()
+	case "chpass":
+		authWrap(cmdChpass)
 	default:
 		authWrap(cmdGet)
 	}

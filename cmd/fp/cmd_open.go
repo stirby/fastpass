@@ -1,7 +1,6 @@
 package main
 
 import (
-	"io/ioutil"
 	"os"
 
 	"github.com/s-kirby/fastpass"
@@ -20,7 +19,5 @@ func cmdOpen() {
 		fail("failed to open db %v: %v", config.DB, err)
 	}
 
-	if err := ioutil.WriteFile(passwordKeyCache, fp.Key[:], 0600); err != nil {
-		fail("failed to write password key cache: %v", err)
-	}
+	writeToPasswordKeyCache(fp.Key)
 }

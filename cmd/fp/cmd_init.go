@@ -3,10 +3,6 @@ package main
 import (
 	"os"
 
-	"fmt"
-
-	"bytes"
-
 	"github.com/s-kirby/fastpass"
 	"github.com/s-kirby/fastpass/keyfile"
 	"github.com/pkg/errors"
@@ -22,15 +18,7 @@ func cmdInit() {
 	var err error
 
 	if config.KeyFile == "" {
-		pwd := fastpass.GetPassword()
-		fmt.Printf("(confirm) ")
-		cpwd := fastpass.GetPassword()
-
-		if bytes.Compare(pwd[:], cpwd[:]) != 0 {
-			fail("password mismatch")
-		}
-
-		key = pwd
+		key = confirmPassword()
 	} else {
 		if key, err = keyfile.Load(config.KeyFile); os.IsNotExist(errors.Cause(err)) {
 			if key, err = keyfile.Create(config.KeyFile); err != nil {
@@ -48,6 +36,8 @@ func cmdInit() {
 	}
 
 	fp.Close()
+
+	writeToPasswordKeyCache(fp.Key)
 
 	success("created db @ %v", config.DB)
 }
