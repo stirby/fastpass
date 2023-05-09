@@ -61,23 +61,23 @@ go get -u github.com/s-kirby/fastpass/cmd/fp
 
 ### Human
 
-The human password generator uses the lists in world_list/ to generate passwords.
+The human password generator uses the lists in passgen/world_list/ to generate passwords.
 
 It uses the following format: `<Adjective><Adjective><Noun><Noun><random num [000, 1000)>`
 
-It uses about 55 bits of entropy.
+It generates about 55 bits of entropy.
 
 ### Hex
 
 Hex generates 16 random hex digits.
 
-It uses 64 bits of entropy.
+It generates 64 bits of entropy.
 
 ### Base62
 
 Base62 generates 16 random base62 digits.
 
-It uses 96 bits of entropy.
+It generates 96 bits of entropy.
 
 ## Password caching
 
