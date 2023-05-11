@@ -59,8 +59,12 @@ func (es Entries) SortByHits() Entries {
 
 //SortByBestMatch tries to sort entries by best match
 func (es Entries) SortByBestMatch(search string) Entries {
+	distances := make([]int, len(es))
+	for i, e := range es {
+		distances[i] = fuzzy.RankMatch(search, e.Name)
+	}
 	sort.Slice(es, func(i, j int) bool {
-		iDistance, jDistance := fuzzy.RankMatch(search, es[i].Name), fuzzy.RankMatch(search, es[j].Name)
+		iDistance, jDistance := distances[i], distances[j]
 
 		if iDistance < 0 {
 			return false
