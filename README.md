@@ -12,15 +12,15 @@ By default it generates easy to remember passwords using human words.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [FastPass](#fastpass)
-  - [Example](#example)
-  - [Install](#install)
-  - [Features](#features)
-  - [Generators](#generators)
-    - [Human](#human)
-    - [Hex](#hex)
-    - [Base62](#base62)
-  - [Password caching](#password-caching)
+- [Example](#example)
+- [Install](#install)
+- [Features](#features)
+- [Smart searching](#smart-searching)
+- [Generators](#generators)
+  - [Human](#human)
+  - [Hex](#hex)
+  - [Base62](#base62)
+- [Password caching](#password-caching)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -50,6 +50,27 @@ go get -u github.com/s-kirby/fastpass/cmd/fp
 - Multiple password generation strategies
 - Password caching
 - Change password
+
+
+## Smart searching
+
+fp uses both password frequency and leviathan distance from search to retrieve the best entry.
+
+For example:
+
+```bash
+ammar @ nebula > ~
+$ fp list reddit
+------------
+/home/ammar/fastpass.db: 2 entries
+------------
+usr1@reddit.com  [hits:1 created:04/02/2017 14:49:50]
+usr2@reddit.com  [hits:3 created:04/02/2017 14:48:58] Notes: hola passwords
+ammar @ nebula > ~
+$ fp reddit
+other matches: usr1@reddit.com 
+usr2@reddit.com -> Password Copied!
+```
 
 
 ## Generators
