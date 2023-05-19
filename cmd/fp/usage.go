@@ -8,30 +8,20 @@ func usage() {
 More info: https://github.com/s-kirby/fastpass
 
 Commands:
-    (default)            The default action is a search for the best
+    (default)            The default action is a get for the best
                          entry that matches the argument value. See
                          the README for more info.
-                         
     init                 Creates a new database at ~/.fp.db or the
                          value of --db.
-                         
-                         If the --key-file is set and the  key file
+                         If --key-file is set and the  key file
                          does not exist, a new one will be created.
-                         
     open                 caches the password for the value of --db.
-    
     close                forgets cached passwords.
-
     new <name>           creates a new entry with name.
-
     delete <name>        deletes an entry.
-
     edit <fuzzy name>    edits an entry with $EDITOR.
-
     list [fuzzy name]    lists all entries.
-
     gen                  generates a password for stdout.
-
     chpass               changes password of active database.
 Options:
   --help, -h             display this help and exit
