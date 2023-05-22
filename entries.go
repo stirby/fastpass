@@ -19,15 +19,18 @@ func (es Entries) FuzzyMatch(search string) (ret Entries) {
 	return
 }
 
-//DeleteByName deletes an entry from es and returns a new slice
+//DeleteByName deletes an entry from es and returns the new slice
 func (es Entries) DeleteByName(name string) (cleaned Entries) {
-	for _, e := range es {
+	for i, e := range es {
 		if e.Name == name {
-			continue
+			cleaned = append(cleaned, es[:i]...)
+			if i != (len(es) - 1) {
+				cleaned = append(cleaned, es[i+i:]...)
+			}
+			return
 		}
-		cleaned = append(cleaned, e)
 	}
-	return
+	return es
 }
 
 //FindByName finds an entry by it's name.
