@@ -6,7 +6,7 @@ import (
 	"github.com/s-kirby/fastpass"
 )
 
-func cmdDelete(fp *fastpass.FastPass) {
+func cmdRm(fp *fastpass.FastPass) {
 	toDelete := flag.Arg(1)
 	if toDelete == "" {
 		usage()

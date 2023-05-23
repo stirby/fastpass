@@ -64,10 +64,10 @@ func main() {
 		cmdClose()
 	case "new":
 		authWrap(cmdNew)
-	case "list":
-		authWrap(cmdList)
-	case "delete":
-		authWrap(cmdDelete)
+	case "ls":
+		authWrap(cmdLs)
+	case "rm":
+		authWrap(cmdRm)
 	case "edit":
 		authWrap(cmdEdit)
 	case "gen":
