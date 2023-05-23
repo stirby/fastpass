@@ -28,8 +28,8 @@ By default it generates easy to remember passwords using human words.
 
 ```bash
 $ fp p
-similar: ammarb36@pornhub.com ammarb36@pornhut.com ammarb36@papajohns.com ammarb36@pizzahut.com ammarb36@paypal.com 
-ammarb36@pornhub.com -> Copied!
+similar: ammarb36@papajohns.com ammarb36@pizzahut.com ammarb36@paypal.com 
+ammarb36@pizzahut.com -> Copied!
 ```
 
 You should take care in making sure the right password is matched.
