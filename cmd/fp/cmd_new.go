@@ -2,15 +2,12 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"time"
 
 	"strings"
 
 	"github.com/s-kirby/fastpass"
 	"github.com/s-kirby/fastpass/passgen"
-	"github.com/atotto/clipboard"
-	"github.com/fatih/color"
 )
 
 func passwordFromGenerator() (password string) {
@@ -39,13 +36,5 @@ func cmdNew(fp *fastpass.FastPass) {
 		CreatedAt: time.Now(),
 	}
 	fp.Entries = append(fp.Entries, entry)
-	fmt.Printf("[%v]", entry.Name)
-	if config.Show {
-		fmt.Printf(" password: %v", color.MagentaString("%q", entry.Password))
-	}
-	if config.Copy {
-		clipboard.WriteAll(entry.Password)
-		fmt.Printf(" copied!")
-	}
-	fmt.Printf("\n")
+	copyPassword(entry)
 }

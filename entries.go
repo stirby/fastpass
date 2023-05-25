@@ -24,8 +24,8 @@ func (es Entries) DeleteByName(name string) (cleaned Entries) {
 	for i, e := range es {
 		if e.Name == name {
 			cleaned = append(cleaned, es[:i]...)
-			if i != (len(es) - 1) {
-				cleaned = append(cleaned, es[i+i:]...)
+			if i < (len(es) - 1) {
+				cleaned = append(cleaned, es[i+1:]...)
 			}
 			return
 		}

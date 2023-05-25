@@ -32,8 +32,8 @@ Options:
                          May also be 'hex', 'base62'.
                          May be set with FP_GENERATOR.
    -s                    Shows password and other information about
-                         entry on new/get. Defaults false.
-   -c                    Copy password on new/get. Defaults true.
+                         entry on new/get instead of copying.
+                         Defaults false.
   --key-file             Key file location. 
                          May be set with FP_KEYFILE
 `
