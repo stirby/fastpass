@@ -64,8 +64,8 @@ $ fp ls reddit
 ------------
 /home/ammar/fastpass.db: 2 entries
 ------------
-usr1@reddit.com  [hits:1 created:04/02/2017 14:49:50]
-usr2@reddit.com  [hits:3 created:04/02/2017 14:48:58] Notes: hola passwords
+usr1@reddit.com  [activity:1 created:04/02/2017 14:49:50]
+usr2@reddit.com  [activity:3 created:04/02/2017 14:48:58] Notes: hola passwords
 ammar @ nebula > ~
 $ fp reddit
 similar: usr1@reddit.com 

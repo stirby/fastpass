@@ -13,8 +13,8 @@ func maxNextHalf() time.Time {
 
 //Stats contains stats about an entry's access.
 type Stats struct {
-	//Hits should not be incremented directly
-	Hits int
+	//Activity should not be incremented directly
+	Activity int
 	//NextHalfInc is added to NextHalf every hit, up to maxNextHalf
 	//It's goal is to prevent entries that are no longer frequently accessed from
 	//being actively selected
@@ -25,9 +25,9 @@ type Stats struct {
 func (s *Stats) Hit() {
 	if time.Now().After(s.NextHalf) {
 		s.NextHalf = time.Now()
-		s.Hits = s.Hits / 2
+		s.Activity = s.Activity / 2
 	}
-	s.Hits++
+	s.Activity++
 	if s.NextHalf.Before(maxNextHalf()) {
 		s.NextHalf = s.NextHalf.Add(NextHalfInc)
 	}

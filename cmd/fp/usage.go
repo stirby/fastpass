@@ -32,7 +32,7 @@ Options:
   --db                   Database location. Defaults to 
                          ~/fastpass.db
                          May be set with env FP_DB.
-   -g                    Password generator. Defaults  to 'human'. 
+   -g                    Password generator. Defaults  to 'human'.
                          May also be 'hex', 'base62'.
                          May be set with FP_GENERATOR.
    -s                    Shows password and other information about
