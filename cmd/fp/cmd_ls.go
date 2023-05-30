@@ -12,7 +12,7 @@ import (
 func cmdLs(fp *fastpass.FastPass) {
 	search := flag.Arg(1)
 
-	entries := fp.Entries.FuzzyMatch(search)
+	entries := fp.Entries.SortByBestMatch(search)
 
 	fmt.Println("------------")
 	fmt.Printf("%v: %v entries\n", config.DB, len(entries))
@@ -23,7 +23,7 @@ func cmdLs(fp *fastpass.FastPass) {
 			largestName = len(runes)
 		}
 	}
-	for _, e := range entries.SortByName() {
+	for _, e := range entries {
 		fmt.Printf("%-"+strconv.Itoa(largestName)+"v [activity:%03v created:%v]", e.Name, e.Stats.Activity, e.CreatedAt.Format("01/02/2006 15:04:05"))
 		if e.Notes != "" {
 			fmt.Printf(" %v", e.Notes)
