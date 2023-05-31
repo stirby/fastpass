@@ -76,19 +76,26 @@ func (es Entries) SortByBestMatch(search string) Entries {
 
 		iDistance, jDistance := distances[i], distances[j]
 
+		// //if j has everything in common, j's better
+		// if jDistance == 0 {
+		// 	return false
+		// }
+
 		if iDistance < 0 {
-			return false
-		}
-		if iDistance == 0 {
-			return true
-		}
-		if jDistance == 0 {
+			// fmt.Printf("%v dist < 0\n", es[i].Name)
 			return false
 		}
 
-		iScore := (float64(es[i].Stats.Activity) / (float64(iDistance) / float64(len(es[i].Name))))
-		jScore := (float64(es[j].Stats.Activity) / (float64(jDistance) / float64(len(es[j].Name))))
-		return iScore > jScore
+		if jDistance < 0 {
+			return true
+		}
+
+		score := func(entry *Entry) float64 {
+			//as name becomes closer to query, this goes up
+			return ((float64(len(entry.Name)) / float64(iDistance)) / float64(entry.Stats.Activity))
+		}
+		// fmt.Printf("scoring %v, %v...\n", es[i].Name, es[j].Name)
+		return score(es[i]) > score(es[j])
 	})
 	return es
 }

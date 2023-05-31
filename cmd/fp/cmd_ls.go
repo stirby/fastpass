@@ -12,7 +12,12 @@ import (
 func cmdLs(fp *fastpass.FastPass) {
 	search := flag.Arg(1)
 
-	entries := fp.Entries.SortByBestMatch(search)
+	var entries fastpass.Entries
+	if search == "" {
+		entries = fp.Entries.SortByName()
+	} else {
+		entries = fp.Entries.SortByBestMatch(search)
+	}
 
 	fmt.Println("------------")
 	fmt.Printf("%v: %v entries\n", config.DB, len(entries))
