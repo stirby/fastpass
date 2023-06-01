@@ -100,8 +100,8 @@ It generates 96 bits of entropy.
 fp caches secrets after an open in `/dev/shm/fp-<username>.secret`
 
 
-## Recommended Format
+## Recommended Name Format
 
-FastPass imports and recommends the following format, all lowercase.
+FastPass imports and recommends the following name format, all lowercase.
 
 `[category/...]<username>@<url/service>`
