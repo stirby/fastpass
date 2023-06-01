@@ -1,6 +1,7 @@
 package fastpass
 
 import (
+	"math"
 	"sort"
 
 	"strings"
@@ -66,35 +67,44 @@ func (es Entries) SortByHits() Entries {
 func (es Entries) SortByBestMatch(search string) Entries {
 	distances := make([]int, len(es))
 	for i, e := range es {
-		distances[i] = fuzzy.RankMatch(search, e.Name)
+		distances[i] = fuzzy.LevenshteinDistance(search, e.Name)
 	}
 	sort.Slice(es, func(i, j int) bool {
 		//if i contains the substring but j doesn't i is much more likely to be correct.
-		if strings.Contains(es[i].Name, search) && !strings.Contains(es[j].Name, search) {
-			return true
+		//and vice versa
+		{
+			inI := strings.Contains(es[i].Name, search)
+			inJ := strings.Contains(es[j].Name, search)
+			if inI && !inJ {
+				return true
+			}
+			if inJ && !inI {
+				return false
+			}
 		}
-
-		iDistance, jDistance := distances[i], distances[j]
 
 		// //if j has everything in common, j's better
 		// if jDistance == 0 {
 		// 	return false
 		// }
 
-		if iDistance < 0 {
-			// fmt.Printf("%v dist < 0\n", es[i].Name)
+		//i is no where close to being close
+		if distances[i] < 0 {
+			// fmt.Printf("%v:%v dist < 0\n", es[i].Name, distances[i])
 			return false
 		}
 
-		if jDistance < 0 {
+		//j is no where close to being close
+		if distances[j] < 0 {
+			// fmt.Printf("%v:%v dist < 0\n", es[j].Name, distances[j])
 			return true
 		}
 
 		score := func(entry *Entry) float64 {
 			//as name becomes closer to query, this goes up
-			return ((float64(len(entry.Name)) / float64(iDistance)) / float64(entry.Stats.Activity))
+			return (math.Log2(float64(entry.Stats.Activity)+1) / (float64(distances[i])))
 		}
-		// fmt.Printf("scoring %v, %v...\n", es[i].Name, es[j].Name)
+		// fmt.Printf("scoring %v:%v, %v:%v...\n", es[i].Name, score(es[i]), es[j].Name, score(es[j]))
 		return score(es[i]) > score(es[j])
 	})
 	return es
