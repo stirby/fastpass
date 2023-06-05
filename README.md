@@ -47,8 +47,9 @@ go get -u github.com/s-kirby/fastpass/cmd/fp
 - Notes
 - Ranking based on access frequency
 - Password and key file support
-- Multiple password generation strategies
 - Password caching
+- Passwords are streched with pbkdf2/sha256 with 65536 iterations
+- Multiple password generation strategies
 - Change password
 
 
