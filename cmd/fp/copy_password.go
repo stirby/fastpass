@@ -14,7 +14,7 @@ func copyPassword(e *fastpass.Entry) {
 		if err := clipboard.WriteAll(e.Password); err != nil {
 			fail("cannot copy to clipboard: %v", err)
 		}
-		fmt.Printf("Copied passwd for ")
+		fmt.Printf("Copied password for ")
 	}
 
 	color.New(color.Bold).Printf("%v", e.Name)

@@ -28,8 +28,8 @@ By default it generates easy to remember passwords using human words.
 
 ```bash
 $ fp p
-similar: ammarb36@papajohns.com ammarb36@pizzahut.com ammarb36@paypal.com 
-ammarb36@pizzahut.com -> Copied!
+similar: ammarb@pizzahut.com ammarb@promhub.com 
+Copied password for ammarb@papajohns.com
 ```
 
 You should take care in making sure the right password is matched.
@@ -46,11 +46,12 @@ go get -u github.com/s-kirby/fastpass/cmd/fp
 - Fuzzy searching
 - Notes
 - Ranking based on access frequency
-- Password and key file support
-- Password caching
+- Master password and key file support
+- Key generated from master password caching
+- Change master password
 - Passwords are streched with pbkdf2/sha256 with 65536 iterations
 - Multiple password generation strategies
-- Change password
+
 
 
 ## Smart searching
@@ -60,17 +61,18 @@ fp uses both password frequency and leviathan distance from search to retrieve t
 For example:
 
 ```bash
-ammar @ nebula > ~
 $ fp ls reddit
 ------------
-/home/ammar/fastpass.db: 2 entries
+/tmp/test.db: 5 entries
 ------------
-usr1@reddit.com  [activity:1 created:04/02/2017 14:49:50]
-usr2@reddit.com  [activity:3 created:04/02/2017 14:48:58] Notes: hola passwords
-ammar @ nebula > ~
+usr1@reddit.com      [activity:003 created:04/03/2017 06:54:31]
+usr2@reddit.com      [activity:000 created:04/03/2017 06:54:34]
+ammarb@papajohns.com [activity:003 created:04/03/2017 06:53:29]
+ammarb@pizzahut.com  [activity:000 created:04/03/2017 06:53:22]
+ammarb@promhub.com   [activity:000 created:04/03/2017 06:53:37]
 $ fp reddit
-similar: usr1@reddit.com 
-usr2@reddit.com -> Password Copied!
+similar: usr2@reddit.com ammarb@papajohns.com ammarb@pizzahut.com ammarb@promhub.com 
+Copied password for usr1@reddit.com
 ```
 
 
