@@ -29,7 +29,7 @@ func cmdLs(fp *fastpass.FastPass) {
 		}
 	}
 	for _, e := range entries {
-		fmt.Printf("%-"+strconv.Itoa(largestName)+"v [activity:%03v created:%v]", e.Name, e.Stats.Activity, e.CreatedAt.Format("01/02/2006 15:04:05"))
+		fmt.Printf("%-"+strconv.Itoa(largestName)+"v [activity:%03v created:%v]", e.Name, e.Stats.Activity, e.CreatedAt.Format("01/02/2006"))
 		if e.Notes != "" {
 			fmt.Printf(" %v", e.Notes)
 		}
