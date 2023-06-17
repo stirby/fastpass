@@ -21,6 +21,8 @@ By default it generates easy to remember passwords using human words.
   - [Hex](#hex)
   - [Base62](#base62)
 - [Password caching](#password-caching)
+- [Recommended Name Format](#recommended-name-format)
+- [Autocompletion?](#autocompletion)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -108,3 +110,7 @@ fp caches secrets after an open in `/dev/shm/fp-<username>.secret`
 FastPass imports and recommends the following name format, all lowercase.
 
 `[category/...]<username>@<url/service>`
+
+## Autocompletion?
+
+I've decided to not add bash autocompletion as of now as it could leak account names after the database is closed.
