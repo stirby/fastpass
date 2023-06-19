@@ -113,4 +113,4 @@ FastPass imports and recommends the following name format, all lowercase.
 
 ## Autocompletion?
 
-I've decided to not add bash autocompletion as of now as it could leak account names after the database is closed.
+I've decided to not add bash autocompletion as of now since it's tricky to implement in a way that won't leak account names.
