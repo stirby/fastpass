@@ -58,7 +58,7 @@ go get -u github.com/s-kirby/fastpass/cmd/fp
 
 ## Smart searching
 
-fp uses both password frequency and leviathan distance from search to retrieve the best entry.
+fp uses both password frequency and levenshtein distance distance from search to retrieve the best entry.
 
 For example:
 
