@@ -14,6 +14,7 @@ var config struct {
 	DB        string
 	KeyFile   string
 	Editor    string
+	Bash      bool
 	Show      bool
 	Notes     bool
 }
@@ -42,6 +43,7 @@ func main() {
 	flag.StringVar(&config.DB, "db", env("FP_DB", usr.HomeDir+"/fastpass.db"), "")
 	flag.StringVar(&config.Generator, "g", env("FP_GENERATOR", "human"), "")
 	flag.StringVar(&config.KeyFile, "key-file", env("FP_KEYFILE", ""), "")
+	flag.BoolVar(&config.Bash, "bash", false, "")
 	flag.BoolVar(&config.Show, "s", false, "")
 	flag.BoolVar(&config.Notes, "notes", false, "")
 

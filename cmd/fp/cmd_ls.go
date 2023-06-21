@@ -16,7 +16,14 @@ func cmdLs(fp *fastpass.FastPass) {
 	if search == "" {
 		entries = fp.Entries.SortByName()
 	} else {
-		entries = fp.Entries.SortByBestMatch(search)
+		entries = fp.Entries.FuzzyMatch(search)
+	}
+
+	if config.Bash {
+		for _, e := range entries {
+			fmt.Printf("%v\n", e.Name)
+		}
+		return
 	}
 
 	fmt.Println("------------")

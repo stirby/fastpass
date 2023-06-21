@@ -22,7 +22,7 @@ By default it generates easy to remember passwords using human words.
   - [Base62](#base62)
 - [Password caching](#password-caching)
 - [Recommended Name Format](#recommended-name-format)
-- [Autocompletion?](#autocompletion)
+- [Autocompletion](#autocompletion)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -111,6 +111,15 @@ FastPass imports and recommends the following name format, all lowercase.
 
 `[category/...]<username>@<url/service>`
 
-## Autocompletion?
+## Autocompletion
 
-I've decided to not add bash autocompletion as of now since it's tricky to implement in a way that won't leak account names.
+Add the following to your `~/.bashrc` for autocompletion supprt
+
+```bash
+__fp_ls() {
+       COMPREPLY=()
+       cur=${COMP_WORDS[COMP_CWORD]}
+       COMPREPLY=( $( compgen -W '$(fp --bash ls)' -- $cur ) )
+}
+complete -F __fp_ls fp
+```
