@@ -65,11 +65,11 @@ func (es Entries) SortByHits() Entries {
 
 //SortByBestMatch tries to sort entries by best match
 func (es Entries) SortByBestMatch(search string) Entries {
-	distances := make([]int, len(es))
-	for i, e := range es {
-		distances[i] = fuzzy.LevenshteinDistance(search, e.Name)
-	}
+
 	sort.Slice(es, func(i, j int) bool {
+		iDistance := fuzzy.LevenshteinDistance(search, es[i].Name)
+		jDistance := fuzzy.LevenshteinDistance(search, es[j].Name)
+
 		//if i contains the substring but j doesn't i is much more likely to be correct.
 		//and vice versa
 		{
@@ -89,23 +89,37 @@ func (es Entries) SortByBestMatch(search string) Entries {
 		// }
 
 		//i is no where close to being close
-		if distances[i] < 0 {
-			// fmt.Printf("%v:%v dist < 0\n", es[i].Name, distances[i])
+		if iDistance < 0 {
+			// fmt.Printf("%v:%v dist < 0\n", es[i].Name, iDistance)
 			return false
 		}
 
 		//j is no where close to being close
-		if distances[j] < 0 {
-			// fmt.Printf("%v:%v dist < 0\n", es[j].Name, distances[j])
+		if jDistance < 0 {
+			// fmt.Printf("%v:%v dist < 0\n", es[j].Name, jDistance)
 			return true
 		}
 
-		score := func(entry *Entry) float64 {
+		activityScore := func(entry *Entry) float64 {
+			return math.Log2(float64(entry.Stats.Activity) + 1)
+		}
+
+		iActivity, jActivity := activityScore(es[i]), activityScore(es[j])
+
+		//cap activities ability to affect results
+		const activityCap = 2.0
+		if (iActivity * activityCap) < jActivity {
+			jActivity = iActivity * activityCap
+		} else if (jActivity * activityCap) < iActivity {
+			iActivity = jActivity * activityCap
+		}
+
+		score := func(activity float64, entry *Entry) float64 {
 			//as name becomes closer to query, this goes up
-			return (math.Log2(float64(entry.Stats.Activity)+1) / (float64(distances[i])))
+			return (activity / (float64(iDistance)))
 		}
 		// fmt.Printf("scoring %v:%v, %v:%v...\n", es[i].Name, score(es[i]), es[j].Name, score(es[j]))
-		return score(es[i]) > score(es[j])
+		return score(iActivity, es[i]) > score(jActivity, es[j])
 	})
 	return es
 }

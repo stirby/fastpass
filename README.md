@@ -119,7 +119,9 @@ Add the following to your `~/.bashrc` for autocompletion supprt
 __fp_ls() {
        COMPREPLY=()
        cur=${COMP_WORDS[COMP_CWORD]}
-       COMPREPLY=( $( compgen -W '$(fp --bash ls)' -- $cur ) )
+       if (($COMP_CWORD == 1)) {
+          COMPREPLY=( $( compgen -W '$(fp --bash ls)' -- $cur ) )
+       }
 }
 complete -F __fp_ls fp
 ```
