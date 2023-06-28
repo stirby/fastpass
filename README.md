@@ -113,7 +113,7 @@ FastPass imports and recommends the following name format, all lowercase.
 
 ## Autocompletion
 
-Add the following to your `~/.bashrc` for autocompletion supprt
+Add the following to your `~/.bashrc` for autocompletion support
 
 ```bash
 __fp_ls() {
