@@ -30,7 +30,11 @@ func cmdGet(fp *fastpass.FastPass) {
 
 	if len(results) > 1 {
 		fmt.Printf("similar: ")
-		for _, r := range results[1:] {
+		for i, r := range results[1:] {
+			//show a maximum of five suggestions
+			if i > 5 {
+				break
+			}
 			fmt.Printf("%v ", r.Name)
 		}
 		fmt.Printf("\n")

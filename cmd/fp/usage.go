@@ -20,7 +20,7 @@ Commands:
     close                forgets cached passwords.
     chpass               changes password of active database.
 
-    new  <name>           creates a new entry with name.
+    new  <name> [pass]   creates a new entry with name.
     rm   <name>          deletes an entry.
     edit <fuzzy name>    edits an entry with $EDITOR or vim.
                          specify --notes to just edit notes.

@@ -26,13 +26,17 @@ func passwordFromGenerator() (password string) {
 
 func cmdNew(fp *fastpass.FastPass) {
 	name := flag.Arg(1)
+	pass := flag.Arg(2)
 	entry := fp.Entries.FindByName(name)
 	if entry != nil {
 		fail("an entry with name %v already exists", name)
 	}
+	if pass == "" {
+		pass = passwordFromGenerator()
+	}
 	entry = &fastpass.Entry{
 		Name:      strings.ToLower(name),
-		Password:  passwordFromGenerator(),
+		Password:  pass,
 		CreatedAt: time.Now(),
 	}
 	fp.Entries = append(fp.Entries, entry)
